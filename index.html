@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdullah Ibrahim | Software & ML Engineer</title>
+    
+    <!-- Devicon Library for Programming Icons -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    
+    <style>
+        :root {
+            --bg-top: #0f172a; /* Slate 900 */
+            --bg-bottom: #020617; /* Slate 950 */
+            --panel-bg: rgba(30, 41, 59, 0.6);
+            --primary: #38bdf8;
+            --secondary: #818cf8;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --glow: 0 0 15px rgba(56, 189, 248, 0.4);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Hero / Header Section */
+        header {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -1px; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(to right, transparent, var(--primary), var(--secondary), transparent);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 4.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 8px rgba(255,255,255,0.2));
+        }
+
+        header h2 {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            margin-top: 15px;
+            letter-spacing: 0.05em;
+            min-height: 40px;
+        }
+
+        /* Typewriter blinking cursor */
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.2em;
+            background-color: var(--primary);
+            vertical-align: middle;
+            animation: blink 0.8s infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* Dynamic Stats Section */
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            padding: 2.5rem;
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            flex-wrap: wrap;
+        }
+
+        .stat-box { text-align: center; }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* Single Column Layout */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Calm Glassmorphism Panels */
+        .section-panel {
+            background: var(--panel-bg);
+            backdrop-filter: blur(12px);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+        
+        .section-panel:hover {
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        h3.panel-title {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        p {
+            color: var(--text-main);
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Skill HexGrid with Icons */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-hex {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-radius: 12px;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+        
+        .skill-hex i {
+            font-size: 3rem;
+            color: var(--text-main);
+            transition: transform 0.3s ease;
+            font-style: normal;
+        }
+
+        .skill-hex:hover {
+            background: rgba(56, 189, 248, 0.1);
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .skill-hex:hover i {
+            transform: scale(1.1);
+            color: var(--primary);
+        }
+
+        /* Special ECPC Card */
+        .ecpc-card {
+            border-color: rgba(129, 140, 248, 0.4);
+            background: linear-gradient(145deg, var(--panel-bg), rgba(129, 140, 248, 0.05));
+        }
+
+        /* Value Proposition Cards */
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .value-card {
+            background: rgba(2, 6, 23, 0.4);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+        }
+
+        .value-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .value-card h4 {
+            color: var(--secondary);
+            margin-top: 0;
+            font-size: 1.2rem;
+        }
+
+        /* ML Workflow Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            top: 0; bottom: 0; left: 5px;
+            opacity: 0.3;
+        }
+
+        .timeline-item {
+            padding: 0 0 30px 20px;
+            position: relative;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--bg-top);
+            border: 2px solid var(--primary);
+            top: 5px;
+            border-radius: 50%;
+            left: -22px;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover::after {
+            background: var(--primary);
+            box-shadow: var(--glow);
+        }
+
+        .timeline-item h4 { margin: 0 0 8px 0; font-size: 1.2rem; color: #fff; }
+        .timeline-item p { margin: 0; font-size: 1rem; opacity: 0.8; }
+
+        /* Dynamic Logs */
+        .dynamic-log { list-style: none; padding: 0; margin: 0; }
+        .log-item {
+            display: grid;
+            grid-template-columns: 50px 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .log-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .log-icon { font-size: 2rem; display: flex; align-items: flex-start; justify-content: center; }
+        .log-details h4 { margin: 0 0 5px 0; font-size: 1.2rem; color: #fff; }
+        .log-details p { font-size: 1rem; margin: 0; opacity: 0.8; }
+
+        /* Connect Buttons */
+        .social-links {
+            display: flex; gap: 15px; flex-wrap: wrap; margin-top: 1.5rem;
+        }
+        .btn-connect {
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-main);
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: var(--transition);
+            display: flex; align-items: center; gap: 10px; font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .btn-connect:hover {
+            background: var(--primary);
+            color: #000;
+            border-color: var(--primary);
+            box-shadow: var(--glow);
+            transform: translateY(-3px);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="reveal active">
+            <h1>ABDULLAH IBRAHIM</h1>
+            <h2><span id="typewriter"></span><span class="cursor"></span></h2>
+        </div>
+    </header>
+
+    <!-- Dynamic Stats Counters -->
+    <div class="stats-container reveal active">
+        <div class="stat-box">
+            <div class="stat-number" data-target="100">0</div>
+            <div class="stat-label">Algorithmic Problems</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number" data-target="9">0</div>
+            <div class="stat-label">Core Techs & Libs</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number" data-target="100">0</div>
+            <div class="stat-label">% Optimization Focus</div>
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <!-- Technical Ecosystem -->
+        <div class="reveal">
+            <div class="section-panel">
+                <h3 class="panel-title">Technical Ecosystem</h3>
+                <p>Core programming skills bridging the gap between robust Back-End architecture and intelligent Machine Learning models.</p>
+                <div class="skills-grid">
+                    <!-- Languages -->
+                    <div class="skill-hex">
+                        <i class="devicon-cplusplus-plain"></i>
+                        <span>C++</span>
+                    </div>
+                    <div class="skill-hex">
+                        <i class="devicon-python-plain"></i>
+                        <span>Python</span>
+                    </div>
+                    <div class="skill-hex">
+                        <i class="devicon-c-plain"></i>
+                        <span>C</span>
+                    </div>
+                    <!-- ML & Data Science Libraries -->
+                    <div class="skill-hex">
+                        <i class="devicon-scikitlearn-plain"></i>
+                        <span>Scikit-Learn</span>
+                    </div>
+                    <div class="skill-hex">
+                        <i class="devicon-pandas-plain"></i>
+                        <span>Pandas</span>
+                    </div>
+                    <div class="skill-hex">
+                        <i class="devicon-numpy-plain"></i>
+                        <span>NumPy</span>
+                    </div>
+                    <div class="skill-hex">
+                        <i class="devicon-matplotlib-plain"></i>
+                        <span>Matplotlib</span>
+                    </div>
+                    <!-- Tools -->
+                    <div class="skill-hex">
+                        <i class="devicon-linux-plain"></i>
+                        <span>Linux</span>
+                    </div>
+                    <div class="skill-hex">
+                        <i class="devicon-html5-plain"></i>
+                        <span>HTML</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education Section -->
+        <div class="reveal">
+            <div class="section-panel">
+                <h3 class="panel-title">Education</h3>
+                <ul class="dynamic-log">
+                    <li class="log-item">
+                        <div class="log-icon">🎓</div>
+                        <div class="log-details">
+                            <h4>Faculty of Computers and Artificial Intelligence</h4>
+                            <p>Cairo University (FCAI-CU)</p>
+                            <p style="font-size: 0.95rem; margin-top: 8px;">
+                                Specializing in Computer Science & AI. Actively engaged in algorithmic problem solving and software engineering principles.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ECPC 2026 Section -->
+        <div class="reveal">
+            <div class="section-panel ecpc-card">
+                <h3 class="panel-title" style="color: var(--secondary);">🏆 ECPC 2026</h3>
+                <p style="margin-bottom: 0;">
+                    Actively preparing and participating in the <strong>Egyptian Collegiate Programming Contest (ECPC) 2026</strong>. 
+                    Focused on advanced data structures, graph algorithms, and dynamic programming to solve complex algorithmic challenges under strict time limits.
+                </p>
+            </div>
+        </div>
+
+        <!-- Experience Log -->
+        <div class="reveal">
+            <div class="section-panel">
+                <h3 class="panel-title">Experience Log</h3>
+                <ul class="dynamic-log">
+                    <li class="log-item">
+                        <div class="log-icon">🚀</div>
+                        <div class="log-details">
+                            <h4>HR-Analytics-Suite App</h4>
+                            <p>Built and deployed an end-to-end Machine Learning classification model via Streamlit to predict employee promotions based on historical data.</p>
+                        </div>
+                    </li>
+                    <li class="log-item">
+                        <div class="log-icon">🧠</div>
+                        <div class="log-details">
+                            <h4>NTI Machine Learning Certification</h4>
+                            <p>Successfully completed the National Telecommunication Institute (NTI) summer training, focusing on practical ML applications and data analysis.</p>
+                        </div>
+                    </li>
+                    <li class="log-item">
+                        <div class="log-icon">⚙️</div>
+                        <div class="log-details">
+                            <h4>Algorithm Optimization</h4>
+                            <p>Mastering time and space complexity to write highly optimized, resource-efficient code in C++ and Python.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ML Workflow Timeline -->
+        <div class="reveal">
+            <div class="section-panel">
+                <h3 class="panel-title">My Workflow Approach</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4>1. Data Gathering & Understanding</h4>
+                        <p>Analyzing the core problem and structuring the data constraints.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>2. Cleaning & EDA</h4>
+                        <p>Handling outliers and extracting deep visual insights.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>3. Model Training & Tuning</h4>
+                        <p>Applying the optimal mathematical algorithms for maximum accuracy.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>4. Deployment</h4>
+                        <p>Transforming complex notebooks into clean, usable web applications.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Value Proposition -->
+        <div class="reveal">
+            <div class="section-panel">
+                <h3 class="panel-title">Why Work With Me?</h3>
+                <div class="value-grid">
+                    <div class="value-card">
+                        <h4>📐 Math Foundation</h4>
+                        <p>Models backed by deep mathematical understanding, ensuring accurate logic.</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>⚙️ Back-End Mindset</h4>
+                        <p>Designing models to be seamlessly integrated into real-world servers.</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>⚡ Optimized Code</h4>
+                        <p>Leveraging competitive programming for fast, resource-efficient execution.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Let's Connect -->
+        <div class="reveal">
+            <div class="section-panel">
+                <h3 class="panel-title">Let's Connect</h3>
+                <p>I'm always open to discussing tech, competitive programming, or potential collaborations.</p>
+                <div class="social-links">
+                    <a href="https://github.com/Abdullahh-16" target="_blank" class="btn-connect">
+                        <i class="devicon-github-original"></i> GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/abdullah-ibrahim" target="_blank" class="btn-connect">
+                        <i class="devicon-linkedin-plain"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        /* 1. Typewriter Effect */
+        const textArray = ["Software Engineer", "ML Engineer", "Competitive Programmer", "CS&AI Student"];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingSpeed = 100;
+        const deletingSpeed = 50;
+        const delayBetweenTexts = 2000;
+        
+        function typeWriter() {
+            const currentText = textArray[textIndex];
+            const typeWriterElement = document.getElementById("typewriter");
+            
+            if (isDeleting) {
+                typeWriterElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typeWriterElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            let speed = isDeleting ? deletingSpeed : typingSpeed;
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                speed = delayBetweenTexts;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % textArray.length;
+                speed = 500;
+            }
+            setTimeout(typeWriter, speed);
+        }
+        document.addEventListener("DOMContentLoaded", typeWriter);
+
+        /* 2. Scroll Reveal */
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+
+        /* 3. Number Counter Animation */
+        const counters = document.querySelectorAll('.stat-number');
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText.replace('+','').replace('%','');
+                const inc = target / 200;
+                if (count < target) {
+                    let nextValue = Math.ceil(count + inc);
+                    if(target === 100 && counter.nextElementSibling.innerText.includes('%')) counter.innerText = nextValue + '%';
+                    else counter.innerText = nextValue + '+';
+                    setTimeout(updateCount, 20);
+                } else {
+                    if(target === 100 && counter.nextElementSibling.innerText.includes('%')) counter.innerText = target + '%';
+                    else counter.innerText = target + '+';
+                }
+            };
+            setTimeout(updateCount, 500);
+        });
+    </script>
+</body>
+</html>
