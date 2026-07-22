@@ -10,14 +10,15 @@
     
     <style>
         :root {
-            --bg-top: #0f172a; /* Slate 900 */
-            --bg-bottom: #020617; /* Slate 950 */
-            --panel-bg: rgba(30, 41, 59, 0.6);
-            --primary: #38bdf8;
-            --secondary: #818cf8;
+            --bg-top: #0a0f1d; 
+            --bg-bottom: #02040a; 
+            --panel-bg: rgba(20, 30, 48, 0.65);
+            --primary: #00f2fe;
+            --secondary: #4facfe;
+            --accent: #f59e0b;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --glow: 0 0 15px rgba(56, 189, 248, 0.4);
+            --glow: 0 0 20px rgba(0, 242, 254, 0.5);
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
@@ -52,10 +53,10 @@
             font-size: 4.5rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            background: linear-gradient(to right, #fff, var(--primary));
+            background: linear-gradient(135deg, #ffffff 0%, var(--primary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 8px rgba(255,255,255,0.2));
+            filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.3));
         }
 
         header h2 {
@@ -82,10 +83,10 @@
         .stats-container {
             display: flex;
             justify-content: center;
-            gap: 3rem;
+            gap: 4rem;
             padding: 2.5rem;
-            background: rgba(15, 23, 42, 0.5);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 15, 29, 0.7);
+            backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             flex-wrap: wrap;
         }
@@ -93,9 +94,11 @@
         .stat-box { text-align: center; }
 
         .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--primary);
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: transparent;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
             margin-bottom: 5px;
             display: flex;
             align-items: center;
@@ -104,25 +107,25 @@
 
         .stat-label {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
         }
 
         /* Single Column Layout */
         .container {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
             padding: 4rem 2rem;
             display: flex;
             flex-direction: column;
-            gap: 3rem;
+            gap: 3.5rem;
         }
 
         /* Scroll Reveal */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(40px);
             transition: all 0.8s ease-out;
         }
         .reveal.active {
@@ -133,116 +136,126 @@
         /* Calm Glassmorphism Panels */
         .section-panel {
             background: var(--panel-bg);
-            backdrop-filter: blur(12px);
-            padding: 3rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(16px);
+            padding: 3.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
             transition: var(--transition);
         }
         
         .section-panel:hover {
-            border-color: rgba(56, 189, 248, 0.3);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(0, 242, 254, 0.4);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
+            transform: translateY(-2px);
         }
 
         h3.panel-title {
             color: var(--primary);
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-top: 0;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            letter-spacing: 0.08em;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.05);
             padding-bottom: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
+            display: inline-block;
         }
 
         p {
             color: var(--text-main);
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             opacity: 0.9;
         }
 
         /* Skill HexGrid with Icons */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 1.5rem;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
         }
 
         .skill-hex {
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(10, 15, 29, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 1.5rem 1rem;
+            padding: 1.8rem 1rem;
             text-align: center;
-            border-radius: 12px;
+            border-radius: 16px;
             transition: var(--transition);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             font-weight: 600;
             letter-spacing: 1px;
             color: var(--text-muted);
+            box-shadow: inset 0 0 0 rgba(0, 242, 254, 0);
         }
         
         .skill-hex i {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--text-main);
-            transition: transform 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             font-style: normal;
         }
 
         .skill-hex:hover {
-            background: rgba(56, 189, 248, 0.1);
-            transform: translateY(-5px);
+            background: rgba(0, 242, 254, 0.05);
+            transform: translateY(-8px);
             border-color: var(--primary);
             color: var(--primary);
+            box-shadow: inset 0 0 20px rgba(0, 242, 254, 0.1);
         }
         
         .skill-hex:hover i {
-            transform: scale(1.1);
+            transform: scale(1.15);
             color: var(--primary);
+            filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.5));
         }
 
         /* Special ECPC Card */
         .ecpc-card {
-            border-color: rgba(129, 140, 248, 0.4);
-            background: linear-gradient(145deg, var(--panel-bg), rgba(129, 140, 248, 0.05));
+            border-color: rgba(245, 158, 11, 0.3);
+            background: linear-gradient(145deg, var(--panel-bg), rgba(245, 158, 11, 0.05));
+        }
+        .ecpc-card:hover {
+            border-color: var(--accent);
         }
 
         /* Value Proposition Cards */
         .value-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
         .value-card {
-            background: rgba(2, 6, 23, 0.4);
-            padding: 1.5rem;
-            border-radius: 10px;
+            background: rgba(5, 8, 15, 0.5);
+            padding: 2rem;
+            border-radius: 12px;
             border: 1px solid rgba(255,255,255,0.05);
             transition: var(--transition);
         }
 
         .value-card:hover {
-            border-color: var(--secondary);
-            transform: translateY(-5px);
+            border-color: var(--primary);
+            transform: translateY(-8px);
+            box-shadow: var(--glow);
         }
 
         .value-card h4 {
-            color: var(--secondary);
+            color: var(--primary);
             margin-top: 0;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
         }
 
         /* ML Workflow Timeline */
         .timeline {
             position: relative;
-            padding-left: 2rem;
+            padding-left: 2.5rem;
         }
 
         .timeline::after {
@@ -250,23 +263,23 @@
             position: absolute;
             width: 2px;
             background: linear-gradient(to bottom, var(--primary), var(--secondary));
-            top: 0; bottom: 0; left: 5px;
-            opacity: 0.3;
+            top: 0; bottom: 0; left: 8px;
+            opacity: 0.5;
         }
 
         .timeline-item {
-            padding: 0 0 30px 20px;
+            padding: 0 0 40px 25px;
             position: relative;
         }
 
         .timeline-item::after {
             content: '';
             position: absolute;
-            width: 12px;
-            height: 12px;
+            width: 16px;
+            height: 16px;
             background: var(--bg-top);
             border: 2px solid var(--primary);
-            top: 5px;
+            top: 4px;
             border-radius: 50%;
             left: -22px;
             z-index: 1;
@@ -276,47 +289,52 @@
         .timeline-item:hover::after {
             background: var(--primary);
             box-shadow: var(--glow);
+            transform: scale(1.2);
         }
 
-        .timeline-item h4 { margin: 0 0 8px 0; font-size: 1.2rem; color: #fff; }
-        .timeline-item p { margin: 0; font-size: 1rem; opacity: 0.8; }
+        .timeline-item h4 { margin: 0 0 10px 0; font-size: 1.3rem; color: #fff; }
+        .timeline-item p { margin: 0; font-size: 1.1rem; opacity: 0.8; }
 
         /* Dynamic Logs */
         .dynamic-log { list-style: none; padding: 0; margin: 0; }
         .log-item {
             display: grid;
-            grid-template-columns: 50px 1fr;
+            grid-template-columns: 60px 1fr;
             gap: 1.5rem;
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
             border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+        }
+        .log-item:hover {
+            transform: translateX(10px);
         }
         .log-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .log-icon { font-size: 2rem; display: flex; align-items: flex-start; justify-content: center; }
-        .log-details h4 { margin: 0 0 5px 0; font-size: 1.2rem; color: #fff; }
-        .log-details p { font-size: 1rem; margin: 0; opacity: 0.8; }
+        .log-icon { font-size: 2.5rem; display: flex; align-items: flex-start; justify-content: center; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); }
+        .log-details h4 { margin: 0 0 8px 0; font-size: 1.3rem; color: #fff; }
+        .log-details p { font-size: 1.1rem; margin: 0; opacity: 0.8; }
 
         /* Connect Buttons */
         .social-links {
-            display: flex; gap: 15px; flex-wrap: wrap; margin-top: 1.5rem;
+            display: flex; gap: 20px; flex-wrap: wrap; margin-top: 2rem;
         }
         .btn-connect {
-            padding: 12px 28px;
-            border-radius: 8px;
+            padding: 14px 32px;
+            border-radius: 10px;
             text-decoration: none;
             color: var(--text-main);
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(10, 15, 29, 0.8);
+            border: 1px solid rgba(255,255,255,0.15);
             transition: var(--transition);
-            display: flex; align-items: center; gap: 10px; font-weight: bold;
-            font-size: 1.1rem;
+            display: flex; align-items: center; gap: 12px; font-weight: bold;
+            font-size: 1.15rem;
         }
         .btn-connect:hover {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: #000;
-            border-color: var(--primary);
+            border-color: transparent;
             box-shadow: var(--glow);
-            transform: translateY(-3px);
+            transform: translateY(-4px);
         }
 
     </style>
@@ -333,7 +351,7 @@
     <!-- Dynamic Stats Counters -->
     <div class="stats-container reveal active">
         <div class="stat-box">
-            <div class="stat-number" data-target="100">0</div>
+            <div class="stat-number" data-target="150">0</div>
             <div class="stat-label">Algorithmic Problems</div>
         </div>
         <div class="stat-box">
@@ -390,8 +408,8 @@
                         <span>Linux</span>
                     </div>
                     <div class="skill-hex">
-                        <i class="devicon-html5-plain"></i>
-                        <span>HTML</span>
+                        <i class="devicon-git-plain"></i>
+                        <span>Git</span>
                     </div>
                 </div>
             </div>
@@ -407,7 +425,7 @@
                         <div class="log-details">
                             <h4>Faculty of Computers and Artificial Intelligence</h4>
                             <p>Cairo University (FCAI-CU)</p>
-                            <p style="font-size: 0.95rem; margin-top: 8px;">
+                            <p style="font-size: 1rem; margin-top: 10px; color: var(--text-muted);">
                                 Specializing in Computer Science & AI. Actively engaged in algorithmic problem solving and software engineering principles.
                             </p>
                         </div>
@@ -419,9 +437,9 @@
         <!-- ECPC 2026 Section -->
         <div class="reveal">
             <div class="section-panel ecpc-card">
-                <h3 class="panel-title" style="color: var(--secondary);">🏆 ECPC 2026</h3>
+                <h3 class="panel-title" style="color: var(--accent); border-bottom-color: rgba(245, 158, 11, 0.2);">🏆 ECPC 2026</h3>
                 <p style="margin-bottom: 0;">
-                    Actively preparing and participating in the <strong>Egyptian Collegiate Programming Contest (ECPC) 2026</strong>. 
+                    Actively preparing and participating in the <strong>Egyptian Collegiate Programming Contest (ECPC) qualifications</strong>. 
                     Focused on advanced data structures, graph algorithms, and dynamic programming to solve complex algorithmic challenges under strict time limits.
                 </p>
             </div>
@@ -430,27 +448,20 @@
         <!-- Experience Log -->
         <div class="reveal">
             <div class="section-panel">
-                <h3 class="panel-title">Experience Log</h3>
+                <h3 class="panel-title">Experience & Projects</h3>
                 <ul class="dynamic-log">
                     <li class="log-item">
-                        <div class="log-icon">🚀</div>
+                        <div class="log-icon">💼</div>
                         <div class="log-details">
-                            <h4>HR-Analytics-Suite App</h4>
-                            <p>Built and deployed an end-to-end Machine Learning classification model via Streamlit to predict employee promotions based on historical data.</p>
+                            <h4>HR Intelligence Suite</h4>
+                            <p>Built an end-to-end data-driven dashboard using Streamlit to support strategic HR decisions. Developed and trained specialized machine learning models (classification and regression) to accurately predict employee promotion, attrition, and salary, providing actionable workforce insights.</p>
                         </div>
                     </li>
                     <li class="log-item">
                         <div class="log-icon">🧠</div>
                         <div class="log-details">
-                            <h4>NTI Machine Learning Certification</h4>
-                            <p>Successfully completed the National Telecommunication Institute (NTI) summer training, focusing on practical ML applications and data analysis.</p>
-                        </div>
-                    </li>
-                    <li class="log-item">
-                        <div class="log-icon">⚙️</div>
-                        <div class="log-details">
-                            <h4>Algorithm Optimization</h4>
-                            <p>Mastering time and space complexity to write highly optimized, resource-efficient code in C++ and Python.</p>
+                            <h4>NTI Machine Learning Internship</h4>
+                            <p>Successfully completed the National Telecommunication Institute (NTI) summer training track, focusing on practical ML applications, data analysis workflows, and building end-to-end models.</p>
                         </div>
                     </li>
                 </ul>
@@ -475,8 +486,8 @@
                         <p>Applying the optimal mathematical algorithms for maximum accuracy.</p>
                     </div>
                     <div class="timeline-item">
-                        <h4>4. Deployment</h4>
-                        <p>Transforming complex notebooks into clean, usable web applications.</p>
+                        <h4>4. Integration & Deployment</h4>
+                        <p>Transforming complex models into clean, usable applications and systems.</p>
                     </div>
                 </div>
             </div>
@@ -493,11 +504,11 @@
                     </div>
                     <div class="value-card">
                         <h4>⚙️ Back-End Mindset</h4>
-                        <p>Designing models to be seamlessly integrated into real-world servers.</p>
+                        <p>Designing structures and models to be seamlessly integrated into real-world databases and servers.</p>
                     </div>
                     <div class="value-card">
                         <h4>⚡ Optimized Code</h4>
-                        <p>Leveraging competitive programming for fast, resource-efficient execution.</p>
+                        <p>Leveraging competitive programming habits for fast, resource-efficient execution.</p>
                     </div>
                 </div>
             </div>
@@ -512,7 +523,7 @@
                     <a href="https://github.com/Abdullahh-16" target="_blank" class="btn-connect">
                         <i class="devicon-github-original"></i> GitHub
                     </a>
-                    <a href="https://www.linkedin.com/in/abdullah-ibrahim" target="_blank" class="btn-connect">
+                    <a href="www.linkedin.com/in/ِabdullah-ibrahim" target="_blank" class="btn-connect">
                         <i class="devicon-linkedin-plain"></i> LinkedIn
                     </a>
                 </div>
@@ -523,13 +534,13 @@
 
     <script>
         /* 1. Typewriter Effect */
-        const textArray = ["Software Engineer", "ML Engineer", "Competitive Programmer", "CS&AI Student"];
+        const textArray = ["Software Engineer", "Back-End & ML", "Competitive Programmer", "Student @ FCAI-CU"];
         let textIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
-        const typingSpeed = 100;
-        const deletingSpeed = 50;
-        const delayBetweenTexts = 2000;
+        const typingSpeed = 80;
+        const deletingSpeed = 40;
+        const delayBetweenTexts = 2500;
         
         function typeWriter() {
             const currentText = textArray[textIndex];
@@ -577,12 +588,12 @@
             const updateCount = () => {
                 const target = +counter.getAttribute('data-target');
                 const count = +counter.innerText.replace('+','').replace('%','');
-                const inc = target / 200;
+                const inc = target / 150;
                 if (count < target) {
                     let nextValue = Math.ceil(count + inc);
                     if(target === 100 && counter.nextElementSibling.innerText.includes('%')) counter.innerText = nextValue + '%';
                     else counter.innerText = nextValue + '+';
-                    setTimeout(updateCount, 20);
+                    setTimeout(updateCount, 30);
                 } else {
                     if(target === 100 && counter.nextElementSibling.innerText.includes('%')) counter.innerText = target + '%';
                     else counter.innerText = target + '+';
